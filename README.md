@@ -7,6 +7,7 @@ Together with a weekly trigger and a google group, this script is used to diffus
 == News ==
 
  * 2021-01-17: First Version
+ * 2021-10-31: Fixed error where the day would increase but not the month
 
 == Installation ==
 
