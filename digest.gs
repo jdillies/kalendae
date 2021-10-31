@@ -19,9 +19,7 @@ var firstDay = 3; // Number of days until first displayed day of events
 var duration = 7; // Number of days of events to display
 
 var now = new Date();
-var startDay = new Date();
-var counterDay = new Date();
-var endOfCounterDay = new Date();
+var startDay = new Date(now);
 
 startDay.setDate(now.getDate()+firstDay); // First day of events to display
 
@@ -43,6 +41,9 @@ Message += "<table class='agenda-table'>"
 
 // Parsing of Data
 
+var counterDay = new Date(startDay);
+var endOfCounterDay = new Date(startDay); 
+ 
 for(var h=0; h<duration; h++){
 
 counterDay.setDate(startDay.getDate()+h);
