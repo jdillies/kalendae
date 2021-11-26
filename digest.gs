@@ -1,5 +1,18 @@
+/***
+ * Function adds 'days' days to date
+ * 
+ * Courtesy of https://stackoverflow.com/a/563442/4551215
+ * 
+ */
+
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 /**
- * List of Calendars to include in Email
+ * Functions lists events of Calendars to include in Email
  */
 
 function WeeklySeminars(){
@@ -41,13 +54,10 @@ Message += "<table class='agenda-table'>"
 
 // Parsing of Data
 
-var counterDay = new Date(startDay);
-var endOfCounterDay = new Date(startDay); 
- 
 for(var h=0; h<duration; h++){
 
-counterDay.setDate(startDay.getDate()+h);
-endOfCounterDay.setDate(counterDay.getDate());
+var counterDay = new Date(startDay.addDays(h));
+var endOfCounterDay = new Date(counterDay);
 counterDay.setHours(0,0,0,0); // Includes all events starting at Midnight
 endOfCounterDay.setHours(23,59,0,0); // Includes all events starting up to 23:59
 
@@ -137,7 +147,6 @@ for (var i = 0; i < NumberOfCalendars; i++) {
 // End of Table
 
 Message += "</table>"
-// Message += "<p><img style='display: block; margin-left: 0px; width: 100px;' alt='***' src='http://jimmy.klacto.net/pix/calvin.png'><br>"
 
 Logger.log('There are ' + TotalNumberOfEvents + ' events this week.')
 
